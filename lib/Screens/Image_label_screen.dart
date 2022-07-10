@@ -110,7 +110,7 @@ class _ImageLabelerScreenState extends State<ImageLabelerScreen> {
               ),
               Text(
                 imageLabelPredictions,
-                style: TextStyle(fontSize: 30),
+                style: TextStyle(fontSize: 24),
               ),
             ],
           ),
