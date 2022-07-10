@@ -126,6 +126,7 @@ class _ImageLabelerScreenState extends State<ImageLabelerScreen> {
         imageLabelChecking = true;
         imageFile = pickedImage;
         setState(() {});
+        getImageLabelsPredictions(image: pickedImage);
       }
     } catch (e) {
       imageLabelChecking = false;
@@ -138,7 +139,7 @@ class _ImageLabelerScreenState extends State<ImageLabelerScreen> {
   void getImageLabelsPredictions({required XFile image}) async {
     final inputImage = InputImage.fromFilePath(image.path);
     ImageLabeler imageLabeler =
-        ImageLabeler(options: ImageLabelerOptions(confidenceThreshold: 0.75));
+        ImageLabeler(options: ImageLabelerOptions(confidenceThreshold: 0.70));
     List<ImageLabel> imgLabels = await imageLabeler.processImage(inputImage);
     StringBuffer sBuffer = StringBuffer();
 
@@ -146,7 +147,7 @@ class _ImageLabelerScreenState extends State<ImageLabelerScreen> {
       String labelText = imglabel.label;
       double confidence = imglabel.confidence;
       sBuffer.write(labelText);
-      sBuffer.write(":");
+      sBuffer.write(" : ");
       sBuffer.write((confidence * 100).toStringAsFixed(2));
       sBuffer.write("%\n"); //adding the % sign and newline
     }
