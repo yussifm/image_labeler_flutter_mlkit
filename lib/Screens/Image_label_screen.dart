@@ -36,7 +36,20 @@ class _ImageLabelerScreenState extends State<ImageLabelerScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               if (imageLabelChecking)
-                const CircularProgressIndicator.adaptive(),
+                SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: Column(
+                    children: const [
+                      Expanded(
+                        child: CircularProgressIndicator.adaptive(),
+                      ),
+                      Expanded(
+                        child: Text("Processing Image"),
+                      ),
+                    ],
+                  ),
+                ),
               if (!imageLabelChecking && imageFile == null)
                 Container(
                   width: 350,
@@ -44,6 +57,9 @@ class _ImageLabelerScreenState extends State<ImageLabelerScreen> {
                   decoration: BoxDecoration(
                     color: Colors.grey,
                     borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Center(
+                    child: Text("Pick an Image"),
                   ),
                 ),
               if (imageFile != null)
@@ -82,7 +98,7 @@ class _ImageLabelerScreenState extends State<ImageLabelerScreen> {
                         getImage(source: ImageSource.gallery);
                       },
                       icon: Icon(Icons.image_outlined),
-                      label: Text("Camera"),
+                      label: Text("Gallery"),
                     ),
                   )
                 ],
