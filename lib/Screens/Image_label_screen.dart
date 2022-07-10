@@ -37,7 +37,7 @@ class _ImageLabelerScreenState extends State<ImageLabelerScreen> {
             children: [
               if (imageLabelChecking)
                 SizedBox(
-                  width: 100,
+                  width: 200,
                   height: 100,
                   child: Column(
                     children: const [
@@ -65,6 +65,8 @@ class _ImageLabelerScreenState extends State<ImageLabelerScreen> {
               if (imageFile != null)
                 Image.file(
                   File(imageFile!.path),
+                  width: 300,
+                  height: 400,
                 ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
